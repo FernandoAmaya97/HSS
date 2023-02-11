@@ -1,12 +1,21 @@
 const { v4 } = require("uuid");
 const AWS = require("aws-sdk");
+const provCntrl = {};
 
-const addProv = async(event) => {
+provCntrl.renderFormProv = (req, res) => {
+    res.render('proveedores/new_proveedor');
+};
+
+provCntrl.createNewProv = async(req, res) => {
+
+    AWS.config.update({
+        region: 'us-east-1'
+      });      
 
     const dynamodb = new AWS.DynamoDB.DocumentClient(); //intenta conectarse a dynamodb
 
-    const {nombre, oficio, dc} = JSON.parse(event.body);
-    const createdAt = new Date();
+    const {nombre, oficio, dc} = req.body;
+    const createdAt = new Date().toISOString();
     const id = v4();
 
     const newProv = {
@@ -24,12 +33,7 @@ const addProv = async(event) => {
     })
     .promise();
 
-    return {
-        statusCode: 200,
-        body: JSON.stringify(newProv),
-    };
+    res.status(200).json(newProv);
 };
 
-module.exports = {
-    addProv,
-};
+module.exports = provCntrl;
