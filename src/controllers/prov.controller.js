@@ -14,15 +14,21 @@ provCntrl.createNewProv = async(req, res) => {
 
     const dynamodb = new AWS.DynamoDB.DocumentClient(); //intenta conectarse a dynamodb
 
-    const {nombre, oficio, dc} = req.body;
+    const {correo, password, nombre, oficio, dc, direccion, ciudad, estado, cp} = req.body;
     const createdAt = new Date().toISOString();
     const id = v4();
 
     const newProv = {
         id, 
+        correo,
+        password,
         nombre,
         oficio,
         dc,
+        direccion,
+        ciudad,
+        estado,
+        cp,
         createdAt,
     };
 
@@ -32,8 +38,12 @@ provCntrl.createNewProv = async(req, res) => {
         Item: newProv,
     })
     .promise();
+    console.log(req.body);
+    res.render('proveedores/login_prov')
+};
 
-    res.status(200).json(newProv);
+provCntrl.renderLoginProv = (req, res) => {
+    res.render('proveedores/login_prov')
 };
 
 module.exports = provCntrl;

@@ -10,6 +10,8 @@ const app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'))
 
+app.use('/assets', express.static(__dirname + '/public'));
+
 // Configure Express Handlebars
 app.engine('.hbs', exphbs.engine({
     defaultLayout: 'main',

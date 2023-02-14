@@ -1,14 +1,76 @@
 <form action="/new_proveedor" method="POST">
-  <div class="form-group">
-    <label for="nombre">Nombre</label>
-    <input type="text" name="nombre" class="form-control" placeholder="Ingrese su nombre completo" auttofocus>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Correo Electronico</label>
+      <input class="form-control" name="correo" placeholder="Correo">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Contraseña</label>
+      <input class="form-control" name="password" placeholder="Contraseña">
+    </div>
   </div>
   <div class="form-group">
-    <label for="oficio">Oficio</label>
-    <input type="text" name="oficio" class="form-control" placeholder="Ingrese el oficio">
+    <label for="inputAddress">Nombre Completo</label>
+    <input class="form-control" name="nombre" placeholder="Nombre(s) y Apellido(s)">
   </div>
   <div class="form-group">
-    <textarea name="dc" placeholder="Descripción de los trabajos que realiza" class="form-control"></textarea>
+    <label for="inputAddress2">Oficio</label>
+    <input class="form-control" name="oficio" placeholder="Jardinería, Albañilería, Fontanería">
   </div>
-  <button type="submit" class="btn btn-primary">Crear proveedor</button>
+  <div class="form-group">
+    <label for="inputAddress2">Descripción Corta</label>
+    <textarea name="dc" placeholder="Realice una descripción corta de los trabajos que sabe realizar" class="form-control"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Dirección</label>
+    <input  class="form-control" name="direccion" placeholder="1234 calle princiapl">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">Ciudad</label>
+      <input class="form-control" name="ciudad">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Estado</label>
+      <select name="estado" class="form-control">
+        <option selected>Selecciona un estado</option>
+    <option>Aguascalientes</option>
+    <option>Baja California</option>
+    <option>Baja California Sur</option>
+    <option>Campeche</option>
+    <option>Chiapas</option>
+    <option>Chihuahua</option>
+    <option>Coahuila</option>
+    <option>Colima</option>
+    <option>Durango</option>
+    <option>Guanajuato</option>
+    <option>Guerrero</option>
+    <option>Hidalgo</option>
+    <option>Jalisco</option>
+    <option>México</option>
+    <option>Michoacán</option>
+    <option>Morelos</option>
+    <option>Nayarit</option>
+    <option>Nuevo León</option>
+    <option>Oaxaca</option>
+    <option>Puebla</option>
+    <option>Querétaro</option>
+    <option>Quintana Roo</option>
+    <option>San Luis Potosí</option>
+    <option>Sinaloa</option>
+    <option>Sonora</option>
+    <option>Tabasco</option>
+    <option>Tamaulipas</option>
+    <option>Tlaxcala</option>
+    <option>Veracruz</option>
+    <option>Yucatán</option>
+    <option>Zacatecas</option>
+  </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">CP</label>
+      <input type="text" class="form-control" name="cp">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Crear Proveedor</button>
 </form>

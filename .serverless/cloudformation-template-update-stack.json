@@ -174,7 +174,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/HSS/dev/1676058689998-2023-02-10T19:51:29.998Z/HSS.zip"
+          "S3Key": "serverless/HSS/dev/1676326980233-2023-02-13T22:23:00.233Z/HSS.zip"
         },
         "Handler": "src/index.handler",
         "Runtime": "nodejs18.x",
@@ -199,7 +199,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/HSS/dev/1676058689998-2023-02-10T19:51:29.998Z/HSS.zip"
+          "S3Key": "serverless/HSS/dev/1676326980233-2023-02-13T22:23:00.233Z/HSS.zip"
         },
         "Handler": "src/controllers/proveedores.addProv",
         "Runtime": "nodejs18.x",
@@ -217,24 +217,24 @@
         "CreateProvLogGroup"
       ]
     },
-    "ApiLambdaVersion6NfPFAo5dyHwx60tHQqlf4X87fyaGnI0hJPokbu9w": {
+    "ApiLambdaVersionDJ3KXooYi1mLJnJcgs2mJHKrRBZPiipzxjt4iQON5pU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ApiLambdaFunction"
         },
-        "CodeSha256": "tVlZ+rgccDgabMadfTx9mG0PqU5kXGxNtjZj6nYvYcU="
+        "CodeSha256": "6CoiCPYReaYKZNJ1UXiPRjDFI3aall6AqARlME4+W7U="
       }
     },
-    "CreateProvLambdaVersionj6nHbf1EC9MoA9DlkR4gp5lCrXqlJ2M4nvvINjggo": {
+    "CreateProvLambdaVersionR1AcYaD23UHnb2EJDx69qhpSVhCaHYefXeyXMmwQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateProvLambdaFunction"
         },
-        "CodeSha256": "tVlZ+rgccDgabMadfTx9mG0PqU5kXGxNtjZj6nYvYcU="
+        "CodeSha256": "6CoiCPYReaYKZNJ1UXiPRjDFI3aall6AqARlME4+W7U="
       }
     },
     "HttpApi": {
@@ -439,7 +439,7 @@
     "ApiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ApiLambdaVersion6NfPFAo5dyHwx60tHQqlf4X87fyaGnI0hJPokbu9w"
+        "Ref": "ApiLambdaVersionDJ3KXooYi1mLJnJcgs2mJHKrRBZPiipzxjt4iQON5pU"
       },
       "Export": {
         "Name": "sls-HSS-dev-ApiLambdaFunctionQualifiedArn"
@@ -448,7 +448,7 @@
     "CreateProvLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateProvLambdaVersionj6nHbf1EC9MoA9DlkR4gp5lCrXqlJ2M4nvvINjggo"
+        "Ref": "CreateProvLambdaVersionR1AcYaD23UHnb2EJDx69qhpSVhCaHYefXeyXMmwQ"
       },
       "Export": {
         "Name": "sls-HSS-dev-CreateProvLambdaFunctionQualifiedArn"
