@@ -1,4 +1,8 @@
-<form action="/new_proveedor" method="POST">
+<form action="/new_proveedor" method="POST" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="inputProfilePic">Foto de Perfil</label>
+    <input type="file" class="form-control-file" name="foto">
+  </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Correo Electronico</label>

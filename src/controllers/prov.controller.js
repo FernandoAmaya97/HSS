@@ -1,23 +1,32 @@
 const { v4 } = require("uuid");
 const AWS = require("aws-sdk");
+const fs = require('fs');
+const { uploadFile } = require('../aws/s3');
+
 const provCntrl = {};
 
+// Renderiza el formulario para crear un nuevo proveedor
 provCntrl.renderFormProv = (req, res) => {
     res.render('proveedores/new_proveedor');
 };
 
+// Maneja la creación de un nuevo proveedor
 provCntrl.createNewProv = async(req, res) => {     
 
     const dynamodb = new AWS.DynamoDB.DocumentClient({
         region: 'us-east-1',
-        accessKeyId: 'AKIAV2APQYE42MDOVC5O',
-        secretAccessKey: '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'
+        accessKeyId: 'AKIAV2APQYE427U2EQ6P',
+        secretAccessKey: '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'
     }); //intenta conectarse a dynamodb
 
     const {correo, password, nombre, oficio, dc, direccion, ciudad, estado, cp} = req.body;
     const createdAt = new Date().toISOString();
     const id = v4();
-    
+
+    console.log(req.file);
+    const result = await uploadFile(req.file)
+    console.log(result['Location']);
+
     const newProv = {
         'id': id,
         'correo': correo,
@@ -29,27 +38,34 @@ provCntrl.createNewProv = async(req, res) => {
         'ciudad': ciudad,
         'estado': estado,
         'cp': cp,
-        'createdAt': createdAt
+        'createdAt': createdAt,
+        'urlFoto': result['Location']
     };
 
     const params = {
         TableName: "proveedor",
         Item: newProv,
     };
-    await dynamodb.put(params, function(err, data) {
-        if(err) {
-            console.log("Error", err);
-        } else {
-            console.log("Success", data);
+
+    try {
+        await dynamodb.put(params).promise();
+        console.log("Success");
+        res.render('proveedores/login_prov');
+    } catch (err) {
+        console.log("Error", err);
+        res.status(500).send("Error al crear el proveedor");
+    }
+    fs.unlink(req.file.path, (err) => {
+        if (err) {
+            console.error(err);
+            return;
         }
-    })
-    .promise();
-    console.log(req.body);
-    res.render('proveedores/login_prov')
+        console.log("imagen local eliminada");
+    });
 };
 
 provCntrl.renderLoginProv = (req, res) => {
-    res.render('proveedores/login_prov')
+    res.render('proveedores/login_prov');
 };
 
 module.exports = provCntrl;
