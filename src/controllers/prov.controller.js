@@ -55,13 +55,6 @@ provCntrl.createNewProv = async(req, res) => {
         console.log("Error", err);
         res.status(500).send("Error al crear el proveedor");
     }
-    fs.unlink(req.file.path, (err) => {
-        if (err) {
-            console.error(err);
-            return;
-        }
-        console.log("imagen local eliminada");
-    });
 };
 
 provCntrl.renderLoginProv = (req, res) => {
