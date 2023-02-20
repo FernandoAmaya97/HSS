@@ -2,9 +2,9 @@ const fs = require('fs');
 const S3 = require('aws-sdk/clients/s3');
 
 const s3 = new S3({
-    region: 'us-east-1',
-        accessKeyId: 'AKIAV2APQYE427U2EQ6P',
-        secretAccessKey: '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'
+    region: process.env.REGION,
+    accessKeyId: process.env.ID,
+    secretAccessKey: process.env.KEY
 });
 
 //subir fotos de perfil a s3

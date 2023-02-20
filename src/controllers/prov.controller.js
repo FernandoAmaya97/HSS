@@ -14,9 +14,9 @@ provCntrl.renderFormProv = (req, res) => {
 provCntrl.createNewProv = async(req, res) => {     
 
     const dynamodb = new AWS.DynamoDB.DocumentClient({
-        region: 'us-east-1',
-        accessKeyId: 'AKIAV2APQYE427U2EQ6P',
-        secretAccessKey: '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'
+        region: process.env.REGION,
+        accessKeyId: process.env.ID,
+        secretAccessKey: process.env.KEY
     }); //intenta conectarse a dynamodb
 
     const {correo, password, nombre, oficio, dc, direccion, ciudad, estado, cp} = req.body;
