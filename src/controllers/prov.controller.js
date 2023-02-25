@@ -1,7 +1,6 @@
 const { v4 } = require("uuid");
 const AWS = require("aws-sdk");
-const fs = require('fs');
-const { uploadFile } = require('../aws/s3');
+const { uploadFile } = require('../aws/s3'); 
 
 const provCntrl = {};
 
@@ -55,6 +54,39 @@ provCntrl.createNewProv = async(req, res) => {
         console.log("Error", err);
         res.status(500).send("Error al crear el proveedor");
     }
+
+    const ses = new AWS.SES({
+        apiVersion: '2010-12-01',
+        region: process.env.REGION,
+        accessKeyId: process.env.ID,
+        secretAccessKey: process.env.KEY
+    });
+
+    const paramsSES = {
+        Destination: {
+            ToAddresses: [correo]
+        },
+        Message: {
+            Body: {
+                Text: {
+                    Data: 'Gracias por registrarte como Proveedor de servicios a nuestra aplicación web HSS'
+                }
+            },
+            Subject: {
+                Data: 'Confirmación de registro'
+            }
+        },
+        Source: 'homeservicessystem@gmail.com'
+    }
+
+    ses.sendEmail(paramsSES, function (err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('Correo electrónico enviado correctamente');
+        }
+    });
+
 };
 
 provCntrl.renderLoginProv = (req, res) => {
